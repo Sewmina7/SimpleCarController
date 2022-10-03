@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    public Wheel[] wheels;
+    public Wheel[] turningWheels;
+    public Wheel[] drivingWheels;
     public Rigidbody rb;
+    public float TopSpeed = 10;
+    
+    public AnimationCurve PowerCurve;
+    public float EnginePower = 5;
 
     void Awake(){
-        foreach(Wheel wheel in wheels){
+        foreach(Wheel wheel in turningWheels){
             wheel.myCar= this;
         }
-    }
-    void Start()
-    {
+
+        foreach(Wheel wheel in drivingWheels){
+            wheel.myCar= this;
+        }
         
+
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
+            //up or down
+            foreach(Wheel wheel in drivingWheels){
+                wheel.Rotate(Input.GetAxis("Vertical"));
+            }
+        
+
+        foreach(Wheel wheel in turningWheels){
+            wheel.Steer(Input.GetAxis("Horizontal"));
+        }
     }
 }

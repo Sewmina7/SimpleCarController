@@ -9,6 +9,9 @@ public class Wheel : MonoBehaviour
     public float restPosition;
     public float restPositionOffset;
     public float springConstant = 1f;
+    public float tireGripFactor =1f;
+    public float tireMass = 1f;
+    public float steerAngle = 25;
     public float dampningFactor = 1f;
     public float velocity;
     // public ForceMode springForceMode;
@@ -18,6 +21,7 @@ public class Wheel : MonoBehaviour
     public float curDisplacement => restPosition - transform.localPosition.y;
     public float topMaxDisplacement => restPosition + displacementRange;
     public float botMaxDisplacement => restPosition - displacementRange;
+    public float bottomEnd => transform.position.y - radius;
     LayerMask groundMask;
 
     public CarController myCar;
@@ -30,17 +34,18 @@ public class Wheel : MonoBehaviour
     }
     public float rayDist ;
     // Update is called once per frame
+    bool grounded = false;
     void FixedUpdate()
     {
         if (myCar == null) { return; }
 
         RaycastHit hit = new RaycastHit();
         float newDisplacement = transform.localPosition.y;
-        float bottomEnd = transform.position.y - radius;
+        
         Vector3 topEnd = transform.position + new Vector3(0, radius, 0);
 
-        bool grounded = false;
-        if (Physics.Linecast(suspensionJoint.position, suspensionJoint.position - new Vector3(0,((radius*2)+(displacementRange))), out hit, groundMask))
+        grounded=false;
+        if (Physics.Linecast(suspensionJoint.position, suspensionJoint.position -(transform.up * ((radius*2)+(displacementRange))), out hit, groundMask))
         {
             Debug.DrawLine(suspensionJoint.position, hit.point, Color.red);
             hitPoint = hit.point.y;
@@ -49,17 +54,51 @@ public class Wheel : MonoBehaviour
             CurDisplacement = restPositionOffset - rayDist;
             velocity = Vector3.Dot(transform.up, myCar.rb.GetPointVelocity(transform.position));
             force = (CurDisplacement * springConstant) - (velocity * dampningFactor);
-            myCar.rb.AddForceAtPosition(Vector3.up * force, transform.position);
+            myCar.rb.AddForceAtPosition(transform.up * force, transform.position);
             grounded = true;
+            Friction();
         }
         else
         {
-            // transform.localPosition = Vector3.Lerp(transform.position, 
-            // new Vector3(transform.localPosition.x, botMaxDisplacement, transform.localPosition.z),0.2f);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, 
+            new Vector3(transform.localPosition.x, botMaxDisplacement, transform.localPosition.z),0.2f);
         }
 
         // transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + velocity, transform.localPosition.z);        
     }
+
+    public void Rotate(float input){
+        if(grounded ){
+            if(input >0){
+
+            }
+            Vector3 accelDir = transform.forward;
+
+            float carSpeed = Vector3.Dot(myCar.transform.forward, myCar.rb.velocity);
+            float normalizedSpeed= Mathf.Clamp01(Mathf.Abs(carSpeed) / myCar.TopSpeed);
+            float availableTorque = myCar.PowerCurve.Evaluate(normalizedSpeed) * input * myCar.EnginePower;
+            
+            myCar.rb.AddForceAtPosition(accelDir * availableTorque, transform.position);
+        }
+    }
+
+    void Friction(){
+        if(grounded){
+            Vector3 steeringDir = transform.right;
+            Vector3 tireWorldVel = myCar.rb.GetPointVelocity(transform.position);
+            float steeringVel = Vector3.Dot(steeringDir, tireWorldVel);
+            float desiredVelChange = -steeringVel * tireGripFactor;
+            float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
+            Vector3 friction = steeringDir * tireMass * desiredAccel;
+            // friction = new Vector3(friction.x, 0, friction.z);
+            myCar.rb.AddForceAtPosition(friction, transform.position);
+        }
+    }
+
+    public void Steer(float input){
+        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, input * steerAngle, transform.localEulerAngles.z);
+    }
+
     public float force;
     void OnDrawGizmos()
     {
