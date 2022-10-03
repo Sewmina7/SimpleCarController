@@ -679,6 +679,249 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1636256662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1636256663}
+  - component: {fileID: 1636256665}
+  - component: {fileID: 1636256664}
+  m_Layer: 0
+  m_Name: spring_rrw
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1636256663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636256662}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.9658861, y: 0.6099876, z: -1.5129414}
+  m_LocalScale: {x: 0.08194579, y: 0.08194579, z: 0.08194579}
+  m_Children: []
+  m_Father: {fileID: 7411533250134105649}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1636256664
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636256662}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1636256665
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636256662}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2034951219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2034951220}
+  - component: {fileID: 2034951222}
+  - component: {fileID: 2034951221}
+  m_Layer: 0
+  m_Name: spring_frw
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2034951220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034951219}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.90677214, y: 0.6099876, z: 1.2831329}
+  m_LocalScale: {x: 0.08194579, y: 0.08194579, z: 0.08194579}
+  m_Children: []
+  m_Father: {fileID: 7411533250134105649}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &2034951221
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034951219}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2034951222
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034951219}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2086183257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2086183258}
+  - component: {fileID: 2086183260}
+  - component: {fileID: 2086183259}
+  m_Layer: 0
+  m_Name: spring_rlw
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2086183258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086183257}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.9658861, y: 0.6099876, z: -1.5129414}
+  m_LocalScale: {x: 0.08194579, y: 0.08194579, z: 0.08194579}
+  m_Children: []
+  m_Father: {fileID: 7411533250134105649}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &2086183259
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086183257}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2086183260
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086183257}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2134517332
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,14 +933,13 @@ GameObject:
   - component: {fileID: 2134517333}
   - component: {fileID: 2134517336}
   - component: {fileID: 2134517335}
-  - component: {fileID: 2134517334}
   m_Layer: 0
-  m_Name: spring
+  m_Name: spring_flw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2134517333
 Transform:
   m_ObjectHideFlags: 0
@@ -705,26 +947,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134517332}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.168, y: 0.104, z: 0}
-  m_LocalScale: {x: 0.08194579, y: 0.43217292, z: 0.08194579}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.90677166, y: 0.6099876, z: 1.2831286}
+  m_LocalScale: {x: 0.08194579, y: 0.08194579, z: 0.08194579}
   m_Children: []
-  m_Father: {fileID: 1223853289183015899}
+  m_Father: {fileID: 7411533250134105649}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2134517334
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134517332}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2134517335
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -884,10 +1113,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.90677166, y: 0.36598757, z: 1.2831286}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2134517333}
+  m_Children: []
   m_Father: {fileID: 7411533250134105649}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1260783703834165802
 MeshFilter:
@@ -1010,14 +1238,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50ae98834c4f5b4cb6847f30a63b13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  suspensionJoint: {fileID: 2034951220}
   radius: 0.4
-  defaultPosition: 0
-  springConstant: 0
-  springForceMode: 2
+  restPosition: 0.5
+  restPositionOffset: 0.65
+  springConstant: 500
+  dampningFactor: 5
+  velocity: 0
   displacementRange: 0.1
-  dampningSpeed: 0.1
   hitPoint: 0
+  CurDisplacement: 0
   myCar: {fileID: 0}
+  rayDist: 0
+  force: 0
 --- !u!23 &3126323158140263403
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1090,14 +1323,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50ae98834c4f5b4cb6847f30a63b13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  suspensionJoint: {fileID: 1636256663}
   radius: 0.4
-  defaultPosition: 0
-  springConstant: 0
-  springForceMode: 2
+  restPosition: 0.5
+  restPositionOffset: 0.65
+  springConstant: 500
+  dampningFactor: 5
+  velocity: 0
   displacementRange: 0.1
-  dampningSpeed: 0.1
   hitPoint: 0
+  CurDisplacement: 0
   myCar: {fileID: 0}
+  rayDist: 0
+  force: 0
 --- !u!1 &3354373785630126000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,14 +1367,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50ae98834c4f5b4cb6847f30a63b13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  suspensionJoint: {fileID: 2086183258}
   radius: 0.4
-  defaultPosition: 0
-  springConstant: 0
-  springForceMode: 2
+  restPosition: 0.5
+  restPositionOffset: 0.65
+  springConstant: 500
+  dampningFactor: 5
+  velocity: 0
   displacementRange: 0.1
-  dampningSpeed: 0.1
   hitPoint: 0
+  CurDisplacement: 0
   myCar: {fileID: 0}
+  rayDist: 0
+  force: 0
 --- !u!23 &3762480873145737400
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1190,7 +1433,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7411533250134105649}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3847812172065456403
 MeshFilter:
@@ -1315,14 +1558,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50ae98834c4f5b4cb6847f30a63b13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  suspensionJoint: {fileID: 2134517333}
   radius: 0.4
-  defaultPosition: 0
-  springConstant: 0
-  springForceMode: 2
+  restPosition: 0.5
+  restPositionOffset: 0.65
+  springConstant: 500
+  dampningFactor: 5
+  velocity: 0
   displacementRange: 0.1
-  dampningSpeed: 0.1
   hitPoint: 0
+  CurDisplacement: 0
   myCar: {fileID: 0}
+  rayDist: 0
+  force: 0
 --- !u!1 &7160292421917157450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,6 +1598,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2134517333}
+  - {fileID: 2034951220}
+  - {fileID: 2086183258}
+  - {fileID: 1636256663}
   - {fileID: 1223853289183015899}
   - {fileID: 7558785777204778374}
   - {fileID: 3779182265360600927}
@@ -1369,7 +1621,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7411533250134105649}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &8527899944241565020
 MeshRenderer:
@@ -1424,7 +1676,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7411533250134105649}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &9051432258879861050
 Transform:
