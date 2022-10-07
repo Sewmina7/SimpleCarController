@@ -11,7 +11,6 @@ public class Wheel : MonoBehaviour
     public float springConstant = 1f;
     public float tireGripFactor =1f;
     public float tireMass = 1f;
-    public float steerAngle = 25;
     public float dampningFactor = 1f;
     public float velocity;
     // public ForceMode springForceMode;
@@ -38,65 +37,87 @@ public class Wheel : MonoBehaviour
     void FixedUpdate()
     {
         if (myCar == null) { return; }
-
+        
         RaycastHit hit = new RaycastHit();
         float newDisplacement = transform.localPosition.y;
         
         Vector3 topEnd = transform.position + new Vector3(0, radius, 0);
 
         grounded=false;
-        if (Physics.Linecast(suspensionJoint.position, suspensionJoint.position -(transform.up * ((radius*2)+(displacementRange))), out hit, groundMask))
+        if (Physics.Linecast(suspensionJoint.position, suspensionJoint.position -(transform.up * ((radius*2)+(displacementRange))), out hit))
         {
-            Debug.DrawLine(suspensionJoint.position, hit.point, Color.red);
+            // Debug.DrawLine(suspensionJoint.position, hit.point, Color.red);
             hitPoint = hit.point.y;
-            transform.position = new Vector3(suspensionJoint.position.x, hitPoint + (radius), suspensionJoint.position.z);
+            // transform.position = new Vector3(suspensionJoint.position.x, hitPoint + (radius), suspensionJoint.position.z);
+            
             rayDist = suspensionJoint.position.y - hitPoint;
+            transform.position = suspensionJoint.position - (suspensionJoint.up *(rayDist - (radius)));
             CurDisplacement = restPositionOffset - rayDist;
             velocity = Vector3.Dot(transform.up, myCar.rb.GetPointVelocity(transform.position));
             force = (CurDisplacement * springConstant) - (velocity * dampningFactor);
+            if(force < 0){force=0;}
             myCar.rb.AddForceAtPosition(transform.up * force, transform.position);
+            Debug.DrawLine(suspensionJoint.position, transform.position + (transform.up * force), Color.red);
+
             grounded = true;
             Friction();
         }
         else
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, 
-            new Vector3(transform.localPosition.x, botMaxDisplacement, transform.localPosition.z),0.2f);
+            Vector3 newPosition = suspensionJoint.position - (suspensionJoint.up * ((radius)+(displacementRange)));
+            transform.position = Vector3.Lerp(transform.position, newPosition, 0.2f);
+            // new Vector3(transform.localPosition.x, botMaxDisplacement, transform.localPosition.z),0.2f);
         }
 
         // transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + velocity, transform.localPosition.z);        
     }
-
     public void Rotate(float input){
         if(grounded ){
-            if(input >0){
-
+            Vector3 accelDir = transform.forward;            
+            if(input ==0){
+                //Decelerate
+                Vector3 force = accelDir * -myCar.curSpeed/myCar.Deceleration;
+                myCar.rb.AddForceAtPosition(force, suspensionJoint.position);
+                Debug.DrawLine(suspensionJoint.position, suspensionJoint.position + force, Color.red);
+            }else{
+                float normalizedSpeed= Mathf.Clamp01(Mathf.Abs(myCar.curSpeed) / myCar.TopSpeed);
+                float availableTorque = myCar.PowerCurve.Evaluate(normalizedSpeed) * input * myCar.EnginePower;
+                Vector3 force = accelDir * availableTorque;
+                myCar.rb.AddForceAtPosition(force, suspensionJoint.position);
+                Debug.DrawLine(suspensionJoint.position, suspensionJoint.position + force, Color.blue);
             }
-            Vector3 accelDir = transform.forward;
-
-            float carSpeed = Vector3.Dot(myCar.transform.forward, myCar.rb.velocity);
-            float normalizedSpeed= Mathf.Clamp01(Mathf.Abs(carSpeed) / myCar.TopSpeed);
-            float availableTorque = myCar.PowerCurve.Evaluate(normalizedSpeed) * input * myCar.EnginePower;
-            
-            myCar.rb.AddForceAtPosition(accelDir * availableTorque, transform.position);
         }
+    }
+
+    public void Brake(){
+        if(!grounded){return;}
+            Vector3 accelDir = transform.forward;            
+
+        Vector3 force = accelDir * -myCar.curSpeed/myCar.BrakePower;
+                myCar.rb.AddForceAtPosition(force, suspensionJoint.position);
+                Debug.DrawLine(suspensionJoint.position, suspensionJoint.position + force, Color.red);
     }
 
     void Friction(){
         if(grounded){
             Vector3 steeringDir = transform.right;
-            Vector3 tireWorldVel = myCar.rb.GetPointVelocity(transform.position);
+            Vector3 tireWorldVel = myCar.rb.GetPointVelocity(suspensionJoint.position);
             float steeringVel = Vector3.Dot(steeringDir, tireWorldVel);
             float desiredVelChange = -steeringVel * tireGripFactor;
             float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
             Vector3 friction = steeringDir * tireMass * desiredAccel;
             // friction = new Vector3(friction.x, 0, friction.z);
-            myCar.rb.AddForceAtPosition(friction, transform.position);
+            Debug.DrawLine(suspensionJoint.position, suspensionJoint.position + friction, Color.blue);
+
+            myCar.rb.AddForceAtPosition(friction, suspensionJoint.position);
         }
     }
 
     public void Steer(float input){
-        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, input * steerAngle, transform.localEulerAngles.z);
+        float carSpeed = Mathf.Clamp01(Vector3.Dot(myCar.transform.forward, myCar.rb.velocity) / myCar.TopSpeed);
+        
+        float newSteerAngle = myCar.maxSteerAngle - ((myCar.maxSteerAngle - myCar.minSteerAngle) * carSpeed);
+        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, input * newSteerAngle, transform.localEulerAngles.z);
     }
 
     public float force;

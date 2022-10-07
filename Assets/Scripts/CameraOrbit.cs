@@ -30,7 +30,7 @@ namespace TDLN.CameraControllers
         {
             if (distance < 2) distance = 2;
             distance -= Input.GetAxis("Mouse ScrollWheel") * 2;
-            if (target && (Input.GetMouseButton(0) || Input.GetMouseButton(1)))
+            if (target)
             {
                 var pos = Input.mousePosition;
                 var dpiScale = 1f;
